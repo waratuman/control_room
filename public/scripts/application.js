@@ -92,16 +92,19 @@ map.container($("#map").get(0).appendChild(po.svg("svg")))
    .add(po.hash())
    .add(po.image().url(po.url("/maps/control_room/{Z}/{X}/{Y}.png")));
 
-map.add(po.compass().zoom("small").pan("none"));
+map.compass = po.compass().zoom("small").pan("none");
+map.add(map.compass);
 
 (function() {
   map.toggleFullscreen = function() {
     if ($('#map').hasClass("fullscreen")) {
       $('#map').removeClass("fullscreen");
       arrow.attr("transform", "translate(16,16)rotate(-45)scale(5)translate(-1.85,0)");
+      map.compass.zoom("small");
     } else {
       $('#map').addClass("fullscreen");
       arrow.attr("transform", "translate(16,16)rotate(135)scale(5)translate(-1.85,0)");
+      map.compass.zoom("big");
     }
     map.resize();
   }
