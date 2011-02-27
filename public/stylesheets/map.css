@@ -1,14 +1,14 @@
 body { text-rendering: optimizeLegibility; }
 svg { display: block; overflow: hidden; }
 
-#map {
+#map-container {
   position: relative;
   border: solid 4px #ccc;
   background: #001420;
   height: 512px;
 }
 
-#map.fullscreen
+#map-container.fullscreen
 {
   position: fixed;
   width: 100%;
@@ -18,7 +18,7 @@ svg { display: block; overflow: hidden; }
   left: 0;
 }
 
-#map #fullscreen-toggle
+#map-container #fullscreen-toggle
 {
   position: absolute;
   right: -16px;
@@ -27,7 +27,7 @@ svg { display: block; overflow: hidden; }
   cursor: pointer;
 }
 
-#map.fullscreen #fullscreen-toggle
+#map-container.fullscreen #fullscreen-toggle
 {
   position: fixed;
   top: 16px;
@@ -41,10 +41,6 @@ svg { display: block; overflow: hidden; }
   stroke-width: 4;
 }
 
-#map .compass {
-  
-  top: 100px;
-}
 .compass .back {
    fill: #eee;
    fill-opacity: .8;

@@ -87,7 +87,7 @@
 var po = org.polymaps;
 
 var map = po.map();
-map.container($("#map").get(0).appendChild(po.svg("svg")))
+map.container($("#map-container").get(0).appendChild(po.svg("svg")))
    .add(po.interact())
    .add(po.hash())
    .add(po.image().url(po.url("/maps/control_room/{Z}/{X}/{Y}.png")));
@@ -97,19 +97,19 @@ map.add(map.compass);
 
 (function() {
   map.toggleFullscreen = function() {
-    if ($('#map').hasClass("fullscreen")) {
-      $('#map').removeClass("fullscreen");
+    if ($('#map-container').hasClass("fullscreen")) {
+      $('#map-container').removeClass("fullscreen");
       arrow.attr("transform", "translate(16,16)rotate(-45)scale(5)translate(-1.85,0)");
       map.compass.zoom("small");
     } else {
-      $('#map').addClass("fullscreen");
+      $('#map-container').addClass("fullscreen");
       arrow.attr("transform", "translate(16,16)rotate(135)scale(5)translate(-1.85,0)");
       map.compass.zoom("big");
     }
     map.resize();
   }
   
-  var button = n$("#map").add("svg:svg")
+  var button = n$("#map-container").add("svg:svg")
     .attr("id", "fullscreen-toggle").attr('width', 32).attr('height', 32)
     .on("mousedown", map.toggleFullscreen);
   var circle = button.add("svg:circle").attr('cx', 16).attr('cy', 16).attr('r', 14);
@@ -120,6 +120,6 @@ map.add(map.compass);
     .attr("pointer-events", "none").attr("fill", "#AAA");
   
   window.addEventListener("keydown", function(key) {
-    key.keyCode == 27 && $('#map').hasClass("fullscreen") && map.toggleFullscreen();
+    key.keyCode == 27 && $('#map-container').hasClass("fullscreen") && map.toggleFullscreen();
   },false);
 })();
